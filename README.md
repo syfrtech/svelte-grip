@@ -41,11 +41,19 @@ Note: reactive values have a `$` suffix to indicate their reactiveness (ex: `dia
 
 It's actually quite easy! Although may a11y patterns do not account for transition animations, we can add this behavior with Svelte. For example:
 
-```
+```html
 {#if $dialog1$.isOpen}
-<dialog transition:fade="{{delay: 250, duration: 300}}" open use:dialog1.content="{$dialog1$}">here is some content!</dialog>
+<dialog
+  transition:fade="{{delay: 250, duration: 300}}"
+  open
+  use:dialog1.content="{$dialog1$}"
+>
+  here is some content!
+</dialog>
 {/if}
 ```
+
+The nice thing here is that svelte-shadow does not interfere with Svelte. You can customize styling and animation transitions however you like using native Svelte syntax... which boils down to native HTML + JS 🤩!
 
 ## FAQ
 
@@ -55,7 +63,7 @@ This allows you to get the functionality you want without being constrained to a
 
 ### Why no .svelte files?
 
-This library is specifically designed not to constrain you to any particular implementation, so it doesn't rely on Svelte components directly. Instead, it uses `use:actions`, providing tools so that you can quickly build functionality.
+This library is specifically itended to avoid straightjacketing you to any particular implementation; it doesn't rely on Svelte components directly. It can be tempting to create the functionality (like React), but we _resist the temptation_! Instead, we use `use:actions` to provide tool access. From there, you are welcome to extend your elements as Svelte components or additional actions as you see fit.
 
 ### What about accessibility?
 
