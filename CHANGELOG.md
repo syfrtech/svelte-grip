@@ -1,5 +1,7 @@
 undefined
 
+### [0.0.1-alpha.6](https://github.com/syfrtech/svelte-shadow/compare/0.0.1-alpha.5...0.0.1-alpha.6) (2022-02-25)undefined
+
 ### [0.0.1-alpha.5](https://github.com/syfrtech/svelte-shadow/compare/0.0.1-alpha.4...0.0.1-alpha.5) (2022-02-25)
 
 
