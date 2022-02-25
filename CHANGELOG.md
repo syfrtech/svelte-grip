@@ -1,5 +1,20 @@
 undefined
 
+### [0.0.1-alpha.9](https://github.com/syfrtech/svelte-grip/compare/0.0.1-alpha.8...0.0.1-alpha.9) (2022-02-25)
+
+
+### Features
+
+* rename to grip ([a11383f](https://github.com/syfrtech/svelte-grip/commit/a11383f1d02e5b42eb2e84bec7a61e7a8d63f131))
+
+
+### Documentation
+
+* add how it works / transitions to readme ([be48757](https://github.com/syfrtech/svelte-grip/commit/be48757016ebe1652bbee11e58862c5ec282f180))
+* update readme ([dc5c7a5](https://github.com/syfrtech/svelte-grip/commit/dc5c7a54b2e82ba6202d2882859826ad0a00e353))
+* update readme ([c6c5aef](https://github.com/syfrtech/svelte-grip/commit/c6c5aefd3106ad1469437d80f718cd3092a2e8c0))
+* update readme ([e04ab55](https://github.com/syfrtech/svelte-grip/commit/e04ab554825a635c4916a3f0ea4d0d5e9f4726dc))undefined
+
 ### [0.0.1-alpha.8](https://github.com/syfrtech/svelte-grip/compare/0.0.1-alpha.7...0.0.1-alpha.8) (2022-02-25)
 
 ### Features
