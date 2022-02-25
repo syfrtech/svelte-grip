@@ -1,5 +1,12 @@
 undefined
 
+### [0.0.1-alpha.5](https://github.com/syfrtech/svelte-shadow/compare/0.0.1-alpha.4...0.0.1-alpha.5) (2022-02-25)
+
+
+### Fixes
+
+* build for npm ([1916b06](https://github.com/syfrtech/svelte-shadow/commit/1916b061445528b8596b508393b34e598c639b6c))undefined
+
 ### [0.0.1-alpha.4](https://github.com/syfrtech/svelte-shadow/compare/0.0.1-alpha.3...0.0.1-alpha.4) (2022-02-25)
 
 
