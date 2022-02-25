@@ -1,6 +1,6 @@
 {
   "name": "svelte-shadow",
-  "version": "0.0.1-alpha.7",
+  "version": "0.0.1-alpha.8",
   "description": "Unstyled, headless, component-less, accessible UI system for Svelte",
   "scripts": {
     "install": "npx tsc",

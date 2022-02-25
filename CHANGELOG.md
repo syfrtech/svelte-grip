@@ -1,5 +1,12 @@
 undefined
 
+### [0.0.1-alpha.8](https://github.com/syfrtech/svelte-shadow/compare/0.0.1-alpha.7...0.0.1-alpha.8) (2022-02-25)
+
+
+### Features
+
+* add ts declaration files to output ([9ce691b](https://github.com/syfrtech/svelte-shadow/commit/9ce691b7415dcccddafa7a0261e8699f5a5a5981))undefined
+
 ### [0.0.1-alpha.7](https://github.com/syfrtech/svelte-shadow/compare/0.0.1-alpha.6...0.0.1-alpha.7) (2022-02-25)
 
 
