@@ -8,9 +8,7 @@ A library of tools that allow you to build totally-custom and accessible accordi
   let [tooltip$, tooltip] = useTooltip();
 </script>
 
-{#if $dialog1$.isOpen}
 <dialog open use:dialog1.content="{$dialog1$}">here is some content!</dialog>
-{/if}
 <button use:dialog1.button="{$dialog1$}" on:click="{dialog1.toggle}">
   click to open modal
 </button>
@@ -18,9 +16,7 @@ A library of tools that allow you to build totally-custom and accessible accordi
   >this link will also open dialog1</a
 >
 
-{#if $tooltip$.isOpen}
 <dialog open use:tooltip.content="{$tooltip$}">here is the tip</dialog>
-{/if}
 <span use:tooltip.trigger="{$tooltip$}">hover for info</span>
 ```
 
@@ -33,15 +29,35 @@ Add it to your Svelte / Svelte Kit project:
 Note: this version is: 0.0.1-alpha.8
 (alpha/beta releases may have breaking changes without warning)
 
-## Why headless / unstyled?
+## How it works
+
+1. You import an action you want to use. ex: `let [tooltip$, tooltip] = useTooltip();`
+2. You add the action to the element(s) that will use that action. ex: `<span use:tooltip.trigger="{$tooltip$}">hover for info</span>`
+3. The action injects the necessary functionality into your element. For example, the `span` above, would register the events to track mouseover and focus to toggle the tooltip content.
+
+Note: reactive values have a `$` suffix to indicate their reactiveness (ex: `dialog1$`). You can subscribe to them with the `$` prefix, so they end up looking like `$dialog1$`
+
+## Transitions / Animations
+
+It's actually quite easy! Although may a11y patterns do not account for transition animations, we can add this behavior with Svelte. For example:
+
+```
+{#if $dialog1$.isOpen}
+<dialog transition:fade="{{delay: 250, duration: 300}}" open use:dialog1.content="{$dialog1$}">here is some content!</dialog>
+{/if}
+```
+
+## FAQ
+
+### Why headless / unstyled?
 
 This allows you to get the functionality you want without being constrained to a particular design style. You can use Material UI, Bootstrap, Carbon, Tailwind, or plain-ole CSS if you like.
 
-## Why no .svelte files?
+### Why no .svelte files?
 
 This library is specifically designed not to constrain you to any particular implementation, so it doesn't rely on Svelte components directly. Instead, it uses `use:actions`, providing tools so that you can quickly build functionality.
 
-## What about accessibility?
+### What about accessibility?
 
 This library is intended to fulfill accessibility / a11y without the headache and documented with references. Even if you think you don't want/need accessibility, you still probably want it. For example:
 
