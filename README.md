@@ -1,8 +1,8 @@
 # Svelte Grip 🤝 (UI Toolset)
 
-<img src="https://img.shields.io/github/package-json/v/syfrtech/svelte-grip" /> <img src="https://img.shields.io/github/languages/top/syfrtech/svelte-grip" /> <img src="https://img.shields.io/github/package-json/dependency-version/syfrtech/svelte-grip/dev/svelte" />
+<img src="https://img.shields.io/github/package-json/v/syfrtech/svelte-grip" /> <img src="https://img.shields.io/github/languages/top/syfrtech/svelte-grip" /> <img src="https://img.shields.io/github/package-json/dependency-version/syfrtech/svelte-grip/dev/svelte" /> <img src="https://img.shields.io/badge/W3C--WAI--ARIA-1.2-brightgreen" />
 
-A library of UI tools build totally-custom and accessible accordions, dialogs, modals, tooltips, and more in Svelte. Written exclusively in Typescript with documentation.
+A library of UI tools that help you build totally-custom and accessible accordions, dialogs, modals, tooltips, and more in Svelte. Written exclusively in Typescript, with extensive documentation and references.
 
 ```html
 <script lang="ts">
@@ -58,6 +58,16 @@ The nice thing here is that svelte-grip does not interfere with Svelte. You can 
 
 ## FAQ
 
+### What is a Grip?
+
+Grip on car tires helps cars climb mountains of sand and mud. Grip on UI lets developers build apps quickly and funly🍻. This is possible with just a few simple rules for Grip:
+
+1. MUST be composible (allowing others to remix as they please)
+2. MUST be typed (for linting)
+3. MUST NOT impose any styling
+4. SHOULD provide robust support for a11y practices
+5. SHOULD provide documentation and links to applicable specifications
+
 ### Why headless / unstyled?
 
 This allows you to get the functionality you want without being constrained to a particular design style. This library can be used with any design framework:
@@ -71,7 +81,7 @@ This allows you to get the functionality you want without being constrained to a
 
 ### Why no .svelte files?
 
-This library is specifically itended to avoid straightjacketing you to any particular implementation; it doesn't rely on Svelte components directly. It can be tempting to create the functionality (like React), but we _resist the temptation_! Instead, we use `use:actions` to provide tool access. From there, you are welcome to extend your elements as Svelte components or additional actions as you see fit.
+It can be tempting to create the functionality (like React), but we _resist the temptation_! Instead, we use `use:actions` to provide tool access. From there, you are welcome to extend your elements as Svelte components or additional actions as you see fit.
 
 ### What about accessibility?
 
