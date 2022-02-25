@@ -1,6 +1,8 @@
-# Svelte Shadow
+# Svelte Grip 🤝 (UI Toolset)
 
-A library of tools that allow you to build totally-custom and accessible accordions, dialogs, modals, tooltips, and more in Svelte. Written exclusively in Typescript with documentation.
+<img src="https://img.shields.io/github/package-json/v/syfrtech/svelte-grip" /> <img src="https://img.shields.io/github/languages/top/syfrtech/svelte-grip" /> <img src="https://img.shields.io/github/package-json/dependency-version/syfrtech/svelte-grip/dev/svelte" />
+
+A library of UI tools build totally-custom and accessible accordions, dialogs, modals, tooltips, and more in Svelte. Written exclusively in Typescript with documentation.
 
 ```html
 <script lang="ts">
@@ -24,10 +26,9 @@ A library of tools that allow you to build totally-custom and accessible accordi
 
 Add it to your Svelte / Svelte Kit project:
 
-`npm install git+https://github.com/syfrtech/svelte-shadow.git `
+`npm install git+https://github.com/syfrtech/svelte-grip.git `
 
-Note: this version is: 0.0.1-alpha.8
-(alpha/beta releases may have breaking changes without warning)
+Note: (alpha/beta releases may have breaking changes without warning)
 
 ## How it works
 
@@ -53,13 +54,20 @@ It's actually quite easy! Although may a11y patterns do not account for transiti
 {/if}
 ```
 
-The nice thing here is that svelte-shadow does not interfere with Svelte. You can customize styling and animation transitions however you like using native Svelte syntax... which boils down to native HTML + JS 🤩!
+The nice thing here is that svelte-grip does not interfere with Svelte. You can customize styling and animation transitions however you like using native Svelte syntax... which boils down to native HTML + JS 🤩!
 
 ## FAQ
 
 ### Why headless / unstyled?
 
-This allows you to get the functionality you want without being constrained to a particular design style. You can use Material UI, Bootstrap, Carbon, Tailwind, or plain-ole CSS if you like.
+This allows you to get the functionality you want without being constrained to a particular design style. This library can be used with any design framework:
+
+- Material UI
+- Bootstrap
+- Tailwind
+- Carbon
+- plain-ole CSS
+- whatever you want!
 
 ### Why no .svelte files?
 

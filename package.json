@@ -1,5 +1,5 @@
 {
-  "name": "svelte-shadow",
+  "name": "svelte-grip",
   "version": "0.0.1-alpha.8",
   "description": "Unstyled, headless, component-less, accessible UI system for Svelte",
   "scripts": {
@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/syfrtech/svelte-shadow.git"
+    "url": "git+https://github.com/syfrtech/svelte-grip.git"
   },
   "keywords": [
     "svelte",
@@ -30,9 +30,9 @@
   "author": "Jonathan Stanley",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/syfrtech/svelte-shadow/discussions"
+    "url": "https://github.com/syfrtech/svelte-grip/discussions"
   },
-  "homepage": "https://github.com/syfrtech/svelte-shadow#readme",
+  "homepage": "https://github.com/syfrtech/svelte-grip#readme",
   "devDependencies": {
     "@release-it/bumper": "^3.0.1",
     "@release-it/conventional-changelog": "^4.2.0",
