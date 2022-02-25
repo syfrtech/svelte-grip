@@ -1,5 +1,12 @@
 undefined
 
+### [0.0.1-alpha.7](https://github.com/syfrtech/svelte-shadow/compare/0.0.1-alpha.6...0.0.1-alpha.7) (2022-02-25)
+
+
+### Fixes
+
+* rename prepare to install ([8f91945](https://github.com/syfrtech/svelte-shadow/commit/8f91945c1dd2b5942bb2572141b98422c1c33eb3))undefined
+
 ### [0.0.1-alpha.6](https://github.com/syfrtech/svelte-shadow/compare/0.0.1-alpha.5...0.0.1-alpha.6) (2022-02-25)undefined
 
 ### [0.0.1-alpha.5](https://github.com/syfrtech/svelte-shadow/compare/0.0.1-alpha.4...0.0.1-alpha.5) (2022-02-25)
