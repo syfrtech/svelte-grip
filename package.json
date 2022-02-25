@@ -3,6 +3,7 @@
   "version": "0.0.1-alpha.4",
   "description": "Unstyled, headless, component-less, accessible UI system for Svelte",
   "scripts": {
+    "build": "npx tsc",
     "release": "release-it --ci"
   },
   "repository": {
