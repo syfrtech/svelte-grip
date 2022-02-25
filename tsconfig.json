@@ -23,6 +23,7 @@
     "forceConsistentCasingInFileNames": true,
     "baseUrl": ".",
     "outDir": "lib",
+    "declaration": true,
     "paths": {
       "$src": ["src"],
       "$src/*": ["src/*"]
