@@ -43,10 +43,18 @@ This library is specifically designed not to constrain you to any particular imp
 
 ## What about accessibility?
 
-This library is intended to fulfill accessibility / a11y without the headache and documented with references. Even if you think you don't want/need accessibility, you probably do. For example:
+This library is intended to fulfill accessibility / a11y without the headache and documented with references. Even if you think you don't want/need accessibility, you still probably want it. For example:
 
-1. Accessible content is easier for machine processing: that means better SEO, better automation, etc
+1. Accessible content is easier for machine processing: that means better SEO, better automation, better device compatibility, etc
 2. Your interface is keyboard friendly🎉. This makes your application more appealing to advanced users who are annoyed when having to drag their mouse all over a screen for no reason.
-3. You get thoroughly vetted patterns: no need to reinvent the wheel
-4. You avoid wasting time with naming and inconsistencies (ex: you don't have to )
+3. You get thoroughly vetted patterns: no need to reinvent the wheel.
+4. You avoid wasting time with naming and inconsistencies (ex: no need to debate `class="modal" id="modal1"` vs `class="modal1"`)
 5. Your application is accessible to those with impairments.
+
+See also:
+
+- [Accessible Rich Internet Applications (WAI-ARIA) 1.2][wai-aria-1.2]
+- [WAI-ARIA Authoring Practices 1.2][wai-aria-1.2-practices]
+
+[wai-aria-1.2]: https://www.w3.org/TR/wai-aria-1.2/
+[wai-aria-1.2-practices]: https://www.w3.org/TR/wai-aria-practices/
