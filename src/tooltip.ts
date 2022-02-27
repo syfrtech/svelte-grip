@@ -2,7 +2,7 @@ import { derived, get } from "svelte/store";
 import { useDisclosure } from "./disclosure";
 import { ariaExpandedAction, useAriaRoleAction } from "./specAria";
 import type { htmlOpenState } from "./specHtml";
-import { deriveAction } from "./utils";
+import { combineActions } from "./utils";
 
 /**
  * Toggles the open state from hover/focus
@@ -73,8 +73,8 @@ export const useTooltip = (params?: Parameters<typeof useDisclosure>[0]) => {
   let { button, content, ...disclosure } = get(disclosure$);
   let result = {
     ...disclosure,
-    content: deriveAction([content, useAriaRoleAction("tooltip")]),
-    trigger: deriveAction([
+    content: combineActions([content, useAriaRoleAction("tooltip")]),
+    trigger: combineActions([
       hoverOrFocusOpenAction,
       ariaExpandedAction,
       escapeToDismissAction,

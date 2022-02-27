@@ -1,19 +1,19 @@
 import { derived } from "svelte/store";
 import { ariaExpandedAction } from "./specAria";
 import { htmlOpenAttributeAction, htmlOpenState } from "./specHtml";
-import { deriveAction } from "./utils";
+import { combineActions } from "./utils";
 
 /**
  * @see ariaExpandedAction
  * @see https://www.w3.org/TR/wai-aria-practices/#wai-aria-roles-states-and-properties-8
  */
-const buttonAction = deriveAction([ariaExpandedAction]);
+const buttonAction = combineActions([ariaExpandedAction]);
 
 /**
  * @see htmlOpenElementAction
  * @see https://www.w3.org/TR/wai-aria-practices/#wai-aria-roles-states-and-properties-8
  */
-const contentAction = deriveAction([htmlOpenAttributeAction]);
+const contentAction = combineActions([htmlOpenAttributeAction]);
 
 const dialogActions = { button: buttonAction, content: contentAction };
 
