@@ -81,7 +81,7 @@ This allows you to get the functionality you want without being constrained to a
 
 ### Why no .svelte files?
 
-It can be tempting to create the functionality (like React), but we _resist the temptation_! Instead, we use `use:actions` to provide tool access. From there, you are welcome to extend your elements as Svelte components or additional actions as you see fit.
+It can be tempting to create the functionality (like React), but we [resist the wrapper temptation](https://betterprogramming.pub/practical-svelte-the-use-directive-60635671335f)! Instead, we use `use:actions` to provide tool access. From there, you are welcome to extend your elements as Svelte components or additional actions as you see fit.
 
 ### What about accessibility?
 
