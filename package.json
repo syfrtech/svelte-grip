@@ -1,6 +1,6 @@
 {
   "name": "svelte-grip",
-  "version": "0.0.1-alpha.9",
+  "version": "0.0.1-alpha.10",
   "description": "Unstyled, headless, component-less, accessible UI system for Svelte",
   "type": "module",
   "scripts": {

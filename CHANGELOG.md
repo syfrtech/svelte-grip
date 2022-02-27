@@ -1,5 +1,24 @@
 undefined
 
+### [0.0.1-alpha.10](https://github.com/syfrtech/svelte-grip/compare/0.0.1-alpha.9...0.0.1-alpha.10) (2022-02-27)
+
+
+### Features
+
+* update deriveActions to combineActions ([4d97915](https://github.com/syfrtech/svelte-grip/commit/4d9791548e1bdb9601a6c6850c294deb7467acb1))
+
+
+### Documentation
+
+* add LICENSE.md ([46a2dc0](https://github.com/syfrtech/svelte-grip/commit/46a2dc0ccab22198c39611767c6831372b79b72c))
+* add reference for why use actions ([1cee6d1](https://github.com/syfrtech/svelte-grip/commit/1cee6d15cc8c22d0875cde0f1687d40d62ae8e9c))
+* update readme ([ce636c8](https://github.com/syfrtech/svelte-grip/commit/ce636c85d9b41e56faddfc26ae036e5649c57fc9))
+
+
+### Fixes
+
+* set module type ([3e59310](https://github.com/syfrtech/svelte-grip/commit/3e59310094171ece7be4e0293ee50942ea0af2e2))undefined
+
 ### [0.0.1-alpha.9](https://github.com/syfrtech/svelte-grip/compare/0.0.1-alpha.8...0.0.1-alpha.9) (2022-02-25)
 
 
