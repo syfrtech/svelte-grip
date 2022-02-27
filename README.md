@@ -1,6 +1,6 @@
 # Svelte Grip 🤝 (UI Toolset)
 
-<img src="https://img.shields.io/github/package-json/v/syfrtech/svelte-grip" /> <img src="https://img.shields.io/github/languages/top/syfrtech/svelte-grip" /> <img src="https://img.shields.io/github/package-json/dependency-version/syfrtech/svelte-grip/dev/svelte" /> <img src="https://img.shields.io/badge/W3C--WAI--ARIA-1.2-brightgreen" />
+<img src="https://img.shields.io/github/v/tag/syfrtech/svelte-grip" /> <img src="https://img.shields.io/github/languages/top/syfrtech/svelte-grip" /> <img src="https://img.shields.io/github/package-json/dependency-version/syfrtech/svelte-grip/dev/svelte" /> <img src="https://img.shields.io/badge/W3C--WAI--ARIA-1.2-brightgreen" />
 
 A library of UI tools that help you build totally-custom and accessible accordions, dialogs, modals, tooltips, and more in Svelte. Written exclusively in Typescript, with extensive documentation and references.
 
