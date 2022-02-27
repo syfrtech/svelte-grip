@@ -2,6 +2,7 @@
   "name": "svelte-grip",
   "version": "0.0.1-alpha.9",
   "description": "Unstyled, headless, component-less, accessible UI system for Svelte",
+  "type": "module",
   "scripts": {
     "install": "npx tsc",
     "release": "release-it --ci"
@@ -49,5 +50,6 @@
   },
   "peerDependencies": {
     "svelte": "^3.46.4"
-  }
+  },
+  "dependencies": {}
 }
