@@ -2,24 +2,17 @@
 
 [<img src="https://img.shields.io/github/v/tag/syfrtech/svelte-grip" />](https://github.com/syfrtech/svelte-grip/releases) [<img src="https://img.shields.io/github/languages/top/syfrtech/svelte-grip" />](https://github.com/syfrtech/svelte-grip/tree/master/src) [<img src="https://img.shields.io/github/package-json/dependency-version/syfrtech/svelte-grip/dev/svelte" />](#svelte) [<img src="https://img.shields.io/badge/W3C--WAI--ARIA-1.2-brightgreen" />](#accessibility)
 
-A library of UI tools that help you build totally-custom and accessible accordions, dialogs, modals, tooltips, and more in Svelte. Written exclusively in Typescript, with extensive documentation and references.
+A library of UI tools that help you build totally-custom and [accessible](#accessibility) accordions, dialogs, modals, tooltips, [and more](https://github.com/syfrtech/svelte-grip/tree/master/src) with Svelte. Written exclusively in Typescript with extensive documentation and references.
 
 ```html
 <script lang="ts">
-  let [dialog1$, dialog1] = useDisclosure();
-  let [tooltip$, tooltip] = useTooltip();
+  let [dialog$, dialog] = useDisclosure();
 </script>
 
-<dialog open use:dialog1.content="{$dialog1$}">here is some content!</dialog>
-<button use:dialog1.button="{$dialog1$}" on:click="{dialog1.toggle}">
+<dialog open use:dialog1.content="{$dialog$}">here is some content!</dialog>
+<button use:dialog1.button="{$dialog$}" on:click="{dialog.toggle}">
   click to open modal
 </button>
-<a href="#" use:dialog1.button="{$dialog1$}" on:click="{dialog1.toggle}"
-  >this link will also open dialog1</a
->
-
-<dialog open use:tooltip.content="{$tooltip$}">here is the tip</dialog>
-<span use:tooltip.trigger="{$tooltip$}">hover for info</span>
 ```
 
 ## Install
