@@ -10,7 +10,7 @@ import { combineActions } from "./utils";
 const buttonAction = combineActions([ariaExpandedAction]);
 
 /**
- * @see htmlOpenElementAction
+ * @see htmlOpenAttributeAction
  * @see https://www.w3.org/TR/wai-aria-practices/#wai-aria-roles-states-and-properties-8
  */
 const contentAction = combineActions([htmlOpenAttributeAction]);
