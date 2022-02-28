@@ -1,6 +1,6 @@
 /**
  * Combines a list of actions into a single action. The actions must be able to receive the same params
- * @note Action type doesn't exist, so we have to try and define it below
+ * @note Action type doesn't exist; so we implement our own below
  */
 export function combineActions<N = HTMLElement, P = any>(
   actions: Action<N, P>[]
