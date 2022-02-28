@@ -1,6 +1,6 @@
 # Svelte Grip 🤝 (UI Toolset)
 
-<img src="https://img.shields.io/github/v/tag/syfrtech/svelte-grip" /> <img src="https://img.shields.io/github/languages/top/syfrtech/svelte-grip" /> <img src="https://img.shields.io/github/package-json/dependency-version/syfrtech/svelte-grip/dev/svelte" /> <img src="https://img.shields.io/badge/W3C--WAI--ARIA-1.2-brightgreen" />
+[<img src="https://img.shields.io/github/v/tag/syfrtech/svelte-grip" />](https://github.com/syfrtech/svelte-grip/releases) [<img src="https://img.shields.io/github/languages/top/syfrtech/svelte-grip" />](https://github.com/syfrtech/svelte-grip/tree/master/src) [<img src="https://img.shields.io/github/package-json/dependency-version/syfrtech/svelte-grip/dev/svelte" />](#svelte) [<img src="https://img.shields.io/badge/W3C--WAI--ARIA-1.2-brightgreen" />](#accessibility)
 
 A library of UI tools that help you build totally-custom and accessible accordions, dialogs, modals, tooltips, and more in Svelte. Written exclusively in Typescript, with extensive documentation and references.
 
@@ -56,7 +56,7 @@ It's actually quite easy! Although may a11y patterns do not account for transiti
 
 The nice thing here is that svelte-grip does not interfere with Svelte. You can customize styling and animation transitions however you like using native Svelte syntax... which boils down to native HTML + JS 🤩!
 
-## FAQ
+## Details
 
 ### What is a Grip?
 
@@ -79,18 +79,18 @@ This allows you to get the functionality you want without being constrained to a
 - plain-ole CSS
 - whatever you want!
 
-### Why no .svelte files?
+### Svelte
 
-It can be tempting to create the functionality (like React), but we [resist the wrapper temptation](https://betterprogramming.pub/practical-svelte-the-use-directive-60635671335f)! Instead, we use `use:actions` to provide tool access. From there, you are welcome to extend your elements as Svelte components or additional actions as you see fit.
+It can be tempting to create wrapper functionality (like React), but we [resist the temptation](https://betterprogramming.pub/practical-svelte-the-use-directive-60635671335f)! Instead, the `use:actions` to provide tool access without .svelte files. From there, you are welcome to extend your elements as Svelte components or additional actions as you see fit.
 
-### What about accessibility?
+### Accessibility
 
-This library is intended to fulfill accessibility / a11y without the headache and documented with references. Even if you think you don't want/need accessibility, you still probably want it. For example:
+This library is intended to fulfill accessibility / a11y with documentation and references, but without the headache. Even if you think you don't want/need accessibility, you still probably want it. For example:
 
 1. Accessible content is easier for machine processing: that means better SEO, better automation, better device compatibility, etc
 2. Your interface is keyboard friendly🎉. This makes your application more appealing to advanced users who are annoyed when having to drag their mouse all over a screen for no reason.
 3. You get thoroughly vetted patterns: no need to reinvent the wheel.
-4. You avoid wasting time with naming and inconsistencies (ex: no need to debate `class="modal" id="modal1"` vs `class="modal1"`)
+4. You can focus on features instead of naming (ex: no need to debate `class="modal" id="modal1"` vs `class="modal1"`)
 5. Your application is accessible to those with impairments.
 
 See also:
