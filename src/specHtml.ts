@@ -12,16 +12,15 @@ import { get, writable } from "svelte/store";
 ## Note
 This differs from CSS [visibility](https://developer.mozilla.org/en-US/docs/Web/CSS/visibility) and [display](https://developer.mozilla.org/en-US/docs/Web/CSS/display) which are intended for styling; not necessarily state.
 
-
- * @todo Typescript isn't allowing HTMLDialogElement. @see https://github.com/microsoft/TypeScript-DOM-lib-generator/pull/1259#issue-1121802821
+[Some typescript implementations ignore HTMLDialogElement](https://github.com/microsoft/TypeScript-DOM-lib-generator/pull/1259#issue-1121802821) as of February 2022. Instead, we just check if the passed element contains the "open" property.
  */
 
 export const htmlOpenAttributeAction = (
-  node: HTMLElement,
+  node: HTMLElement & { open?: boolean },
   params: ReturnType<typeof htmlOpenState>
 ) => {
   const update = (params: ReturnType<typeof htmlOpenState>) => {
-    if (node instanceof HTMLDetailsElement) {
+    if ("open" in node) {
       node.open = get(params.isOpen$);
     }
   };
