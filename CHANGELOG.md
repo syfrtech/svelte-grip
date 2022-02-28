@@ -1,5 +1,25 @@
 undefined
 
+### [0.0.1-alpha.11](https://github.com/syfrtech/svelte-grip/compare/0.0.1-alpha.10...0.0.1-alpha.11) (2022-02-28)
+
+
+### Features
+
+* add index ([874ea6d](https://github.com/syfrtech/svelte-grip/commit/874ea6d0a2c482617b5023228fcf8b9a0f17e8f5))
+
+
+### Fixes
+
+* set any element with the open attribute ([004ad27](https://github.com/syfrtech/svelte-grip/commit/004ad27a597241f4a9285bc3108676f338d21806))
+
+
+### Documentation
+
+* add shield links ([6f0312d](https://github.com/syfrtech/svelte-grip/commit/6f0312d21f4cca8375e84c80ce04b27eec746e8f))
+* clarify Action type ([7e64960](https://github.com/syfrtech/svelte-grip/commit/7e6496053b621ab3b3b98230f73a39b1db0ea86e))
+* simplify initial example ([2d0fc80](https://github.com/syfrtech/svelte-grip/commit/2d0fc80b9365d9460f5ae53a9a1dbadc58983dcf))
+* update version shield ([388cf18](https://github.com/syfrtech/svelte-grip/commit/388cf18f7850f4e5a4636a5679a81981472d869e))undefined
+
 ### [0.0.1-alpha.10](https://github.com/syfrtech/svelte-grip/compare/0.0.1-alpha.9...0.0.1-alpha.10) (2022-02-27)
 
 
