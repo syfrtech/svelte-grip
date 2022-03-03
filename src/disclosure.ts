@@ -7,7 +7,7 @@ import { combineActions } from "./utils";
  * @see ariaExpandedAction
  * @see https://www.w3.org/TR/wai-aria-practices/#wai-aria-roles-states-and-properties-8
  */
-const buttonAction = combineActions([ariaExpandedAction]);
+const triggerAction = combineActions([ariaExpandedAction]);
 
 /**
  * @see htmlOpenAttributeAction
@@ -15,7 +15,7 @@ const buttonAction = combineActions([ariaExpandedAction]);
  */
 const contentAction = combineActions([htmlOpenAttributeAction]);
 
-const dialogActions = { button: buttonAction, content: contentAction };
+const disclosureActions = { trigger: triggerAction, content: contentAction };
 
 /**
  * @param props.defaultOpen if supplied `true`, the disclosure will be visible on initialization
@@ -32,14 +32,14 @@ const dialogActions = { button: buttonAction, content: contentAction };
 ## Note
 returns `[Readable<ob>, obj]` so that consumers can have access to reactive (ex: $disclosure$.isOpen) or static properties (ex: disclosure.toggle) for easier use with Svelte:
 - {#if ...} is useful for transitions, but cannot use $ on properties.ex: `dialog1.$isOpen` or `$dialog1.isOpen` fails
-- `use:` is needed to apply functionality, but cannot use reactives values here.  ex: `use:$dialog1$.buttonAction` fails
+- `use:` is needed to apply functionality, but cannot use reactives values here.  ex: `use:$dialog1$.triggerAction` fails
 - [It is recommended](https://github.com/sveltejs/svelte/issues/6373) to add a `$` suffix to reactive variable names to have a simple indicator to distinguish them from non-reactive values. ex: `[$disclosure, disclosure] = useDisclosure();`
 */
 export const useDisclosure = (params?: {
   defaultOpen: Parameters<typeof htmlOpenState>[0];
 }) => {
   let state = htmlOpenState(params?.defaultOpen);
-  let result = { ...state, ...dialogActions };
+  let result = { ...state, ...disclosureActions };
   let result$ = derived(state.isOpen$, (isOpen) => {
     return { ...result, isOpen };
   });
