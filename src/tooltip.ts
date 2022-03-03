@@ -70,13 +70,13 @@ Uses "tooltip" role [per ARIA](https://www.w3.org/TR/wai-aria-practices/#wai-ari
 */
 export const useTooltip = (params?: Parameters<typeof useDisclosure>[0]) => {
   let [disclosure$] = useDisclosure(params);
-  let { button, content, ...disclosure } = get(disclosure$);
+  let { trigger, content, ...disclosure } = get(disclosure$);
   let result = {
     ...disclosure,
     content: combineActions([content, useAriaRoleAction("tooltip")]),
     trigger: combineActions([
+      trigger,
       hoverOrFocusOpenAction,
-      ariaExpandedAction,
       escapeToDismissAction,
     ]),
   };
