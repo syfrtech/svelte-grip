@@ -70,6 +70,6 @@ export const useAriaRoleAction = (role: string) => {
  *
  * Add to dialog content per [ARIA Practices](https://www.w3.org/TR/wai-aria-practices-1.2/#dialog_roles_states_props)
  */
-export const useAriaModalAction = (node: HTMLElement) => {
+export const ariaModalAction = (node: HTMLElement) => {
   node.setAttribute("aria-modal", "true");
 };
