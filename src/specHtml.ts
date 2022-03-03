@@ -17,14 +17,14 @@ This differs from CSS [visibility](https://developer.mozilla.org/en-US/docs/Web/
 
 export const htmlOpenAttributeAction = (
   node: HTMLElement & { open?: boolean },
-  params: ReturnType<typeof htmlOpenState>
+  store: ReturnType<typeof htmlOpenStore>
 ) => {
-  const update = (params: ReturnType<typeof htmlOpenState>) => {
+  const update = (store: ReturnType<typeof htmlOpenStore>) => {
     if ("open" in node) {
-      node.open = get(params.isOpen$);
+      node.open = get(store.isOpen$);
     }
   };
-  update(params);
+  update(store);
   return { update };
 };
 
@@ -33,19 +33,17 @@ export const htmlOpenAttributeAction = (
  * @param defaultOpen if supplied `true`, the content will be visible on initialization
  */
 export const htmlOpenStore = (defaultOpen: boolean = false) => {
-  return writable(defaultOpen);
+  return { isOpen$: writable(defaultOpen) };
 };
 
 /**
  * Provides functions which change the visibility of the content
  */
-export const htmlOpenMutators = (stores: {
-  isOpen$: ReturnType<typeof htmlOpenStore>;
-}) => {
+export const htmlOpenMutators = (store: ReturnType<typeof htmlOpenStore>) => {
   return {
-    toggle: () => stores.isOpen$.update((cur) => !cur),
-    show: () => stores.isOpen$.set(true),
-    hide: () => stores.isOpen$.set(false),
+    toggle: () => store.isOpen$.update((cur) => !cur),
+    show: () => store.isOpen$.set(true),
+    hide: () => store.isOpen$.set(false),
   };
 };
 
@@ -55,9 +53,9 @@ export const htmlOpenMutators = (stores: {
 export const htmlOpenState = (
   defaultOpen: Parameters<typeof htmlOpenStore>[0]
 ) => {
-  let stores = { isOpen$: htmlOpenStore(defaultOpen) };
-  let mutators = htmlOpenMutators(stores);
-  return { ...stores, ...mutators };
+  let store = htmlOpenStore(defaultOpen);
+  let mutators = htmlOpenMutators(store);
+  return { ...store, ...mutators };
 };
 
 export type HtmlOpenState = ReturnType<typeof htmlOpenState>;
