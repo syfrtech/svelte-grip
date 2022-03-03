@@ -1,5 +1,6 @@
 // tested and tree shakable
 
+export * from "./dialog.js";
 export * from "./disclosure.js";
 export * from "./tooltip.js";
 
