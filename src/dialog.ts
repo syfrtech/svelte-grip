@@ -1,6 +1,6 @@
 import { derived, get } from "svelte/store";
 import { useDisclosure } from "./disclosure";
-import { useAriaRoleAction } from "./specAria";
+import { escapeToDismissAction, useAriaRoleAction } from "./specAria";
 import { combineActions } from "./utils";
 
 /**
@@ -11,7 +11,9 @@ A dialog is a window overlaid on either the primary window or another dialog win
 
 [See ARIA "Dialog" pattern](https://www.w3.org/TR/wai-aria-practices/#dialog_modal)
 
-Uses "dialog" role [per ARIA](https://www.w3.org/TR/wai-aria-practices/#dialog_roles_states_props).
+Uses "dialog" role [per ARIA](https://www.w3.org/TR/wai-aria-practices-1.2/#dialog_roles_states_props).
+
+Escape to dismiss [per ARIA](https://www.w3.org/TR/wai-aria-practices-1.2/#keyboard-interaction-7)
 */
 export const useDialog = (params?: Parameters<typeof useDisclosure>[0]) => {
   let [disclosure$] = useDisclosure(params);
@@ -19,7 +21,7 @@ export const useDialog = (params?: Parameters<typeof useDisclosure>[0]) => {
   let result = {
     ...disclosure,
     content: combineActions([content, useAriaRoleAction("dialog")]),
-    trigger: combineActions([trigger]),
+    trigger: combineActions([trigger, escapeToDismissAction]),
   };
   let result$ = derived(disclosure.isOpen$, (isOpen) => {
     return { ...result, isOpen };
