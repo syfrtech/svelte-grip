@@ -1,5 +1,23 @@
 undefined
 
+### [0.0.1-alpha.12](https://github.com/syfrtech/svelte-grip/compare/0.0.1-alpha.11...0.0.1-alpha.12) (2022-03-03)
+
+
+### Features
+
+* add dialog ([ef27e51](https://github.com/syfrtech/svelte-grip/commit/ef27e51442c6b235ddfb932ad316730097879e1e))
+
+
+### Documentation
+
+* fix [@see](https://github.com/see) reference ([69e8faf](https://github.com/syfrtech/svelte-grip/commit/69e8fafe73d459c676d1e30aa0a33bcad7a83bb3))
+
+
+### Fixes
+
+* add .js to resolve error: ([ba4257b](https://github.com/syfrtech/svelte-grip/commit/ba4257beb6f3e9dac185a446b932497fd5345103))
+* correct wordin ([b4bd87d](https://github.com/syfrtech/svelte-grip/commit/b4bd87d30ff335080b9b65e7ede16e4618d13c99))undefined
+
 ### [0.0.1-alpha.11](https://github.com/syfrtech/svelte-grip/compare/0.0.1-alpha.10...0.0.1-alpha.11) (2022-02-28)
 
 
