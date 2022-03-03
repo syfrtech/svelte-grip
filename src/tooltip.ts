@@ -1,6 +1,6 @@
 import { derived, get } from "svelte/store";
 import { useDisclosure } from "./disclosure";
-import { ariaExpandedAction, useAriaRoleAction } from "./specAria";
+import { escapeToDismissAction, useAriaRoleAction } from "./specAria";
 import type { htmlOpenState } from "./specHtml";
 import { combineActions } from "./utils";
 
@@ -25,34 +25,6 @@ export const hoverOrFocusOpenAction = (
     node.onmouseleave = params.hide;
     node.ontouchend = params.hide;
     node.onblur = params.hide;
-  };
-  update(params);
-  return { update };
-};
-
-/**
- * `Escape` key dismisses the Tooltip
- * @see https://www.w3.org/TR/wai-aria-practices/#keyboard-interaction-23
- *
- * This works when triggered through a focus.
- *
- * However, it should dismiss regardless of invocation from hover or focus
- * @see https://www.w3.org/TR/WCAG21/#content-on-hover-or-focus
- *
- * Unfortunately, there is no consensus on how to accomplish this.
- * @see https://github.com/w3c/aria-practices/issues/127
- * @see https://github.com/w3c/aria-practices/issues/128
- */
-export const escapeToDismissAction = (
-  node: HTMLElement,
-  params: ReturnType<typeof htmlOpenState>
-) => {
-  const update = (params: ReturnType<typeof htmlOpenState>) => {
-    node.onkeyup = (e) => {
-      if (e.key === "Escape") {
-        params.hide();
-      }
-    };
   };
   update(params);
   return { update };

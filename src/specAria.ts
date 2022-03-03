@@ -2,6 +2,32 @@ import { get } from "svelte/store";
 import type { HtmlOpenState } from "./specHtml";
 
 /**
+ * `Escape` key dismisses the disclosure
+ * @see https://www.w3.org/TR/wai-aria-practices/#keyboard-interaction-23
+ *
+ * It should dismiss when triggered by a hover
+ * @see https://www.w3.org/TR/WCAG21/#content-on-hover-or-focus
+ *
+ * Unfortunately, there is no consensus on how to accomplish this.
+ * @see https://github.com/w3c/aria-practices/issues/127
+ * @see https://github.com/w3c/aria-practices/issues/128
+ */
+export const escapeToDismissAction = (
+  node: HTMLElement,
+  params: HtmlOpenState
+) => {
+  const update = (params: HtmlOpenState) => {
+    node.onkeyup = (e) => {
+      if (e.key === "Escape") {
+        params.hide();
+      }
+    };
+  };
+  update(params);
+  return { update };
+};
+
+/**
  * Indicates whether a grouping element owned or controlled by this element is expanded or collapsed. See spec on: [W3C](https://www.w3.org/TR/wai-aria-1.2/#aria-expanded) or [MDN](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-expanded)
  *
  * Used by:
