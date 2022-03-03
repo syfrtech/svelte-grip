@@ -1,6 +1,10 @@
 import { derived, get } from "svelte/store";
 import { useDisclosure } from "./disclosure";
-import { escapeToDismissAction, useAriaRoleAction } from "./specAria";
+import {
+  escapeToDismissAction,
+  useAriaModalAction,
+  useAriaRoleAction,
+} from "./specAria";
 import { combineActions } from "./utils";
 
 /**
@@ -20,7 +24,11 @@ export const useDialog = (params?: Parameters<typeof useDisclosure>[0]) => {
   let { trigger, content, ...disclosure } = get(disclosure$);
   let result = {
     ...disclosure,
-    content: combineActions([content, useAriaRoleAction("dialog")]),
+    content: combineActions([
+      content,
+      useAriaRoleAction("dialog"),
+      useAriaModalAction,
+    ]),
     trigger: combineActions([trigger, escapeToDismissAction]),
   };
   let result$ = derived(disclosure.isOpen$, (isOpen) => {

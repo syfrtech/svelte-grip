@@ -64,3 +64,12 @@ export const useAriaRoleAction = (role: string) => {
     node.setAttribute("role", role);
   };
 };
+
+/**
+ * The [aria-modal attribute](https://www.w3.org/TR/wai-aria-1.2/#aria-modal) is used to indicate that the presence of a "modal" element precludes usage of other content on the page.
+ *
+ * Add to dialog content per [ARIA Practices](https://www.w3.org/TR/wai-aria-practices-1.2/#dialog_roles_states_props)
+ */
+export const useAriaModalAction = (node: HTMLElement) => {
+  node.setAttribute("aria-modal", "true");
+};
