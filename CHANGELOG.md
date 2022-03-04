@@ -1,5 +1,20 @@
 undefined
 
+### [0.0.1-alpha.13](https://github.com/syfrtech/svelte-grip/compare/0.0.1-alpha.12...0.0.1-alpha.13) (2022-03-04)
+
+
+### Fixes
+
+* add aria-modal to dialog ([eb9512a](https://github.com/syfrtech/svelte-grip/commit/eb9512a677fd709200edcf341692019b41df9573))
+* enable escapeToDismiss on dialog ([4112e22](https://github.com/syfrtech/svelte-grip/commit/4112e22f87fc1d91bf15dd0ee45899c7f5fa0c75))
+* rename hide to close to match spec ([b8b425e](https://github.com/syfrtech/svelte-grip/commit/b8b425e121efad3d1d486c0edfe65898d466deee))
+
+
+### Documentation
+
+* add aria reference ([acec949](https://github.com/syfrtech/svelte-grip/commit/acec9497a2ff0d8bec33b348222e75e9f96c4d26))
+* add note about show/close for dialog ([6d7285c](https://github.com/syfrtech/svelte-grip/commit/6d7285c04edcb3059a67cd2752049c550f80d8e3))undefined
+
 ### [0.0.1-alpha.12](https://github.com/syfrtech/svelte-grip/compare/0.0.1-alpha.11...0.0.1-alpha.12) (2022-03-03)
 
 
