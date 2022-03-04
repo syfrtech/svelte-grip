@@ -15,7 +15,7 @@ A dialog is a window overlaid on either the primary window or another dialog win
 
 [See ARIA "Dialog" pattern](https://www.w3.org/TR/wai-aria-practices/#dialog_modal)
 
-Uses "dialog" role [per ARIA](https://www.w3.org/TR/wai-aria-practices-1.2/#dialog_roles_states_props).
+Uses "dialog" role [per ARIA](https://www.w3.org/TR/wai-aria-1.2/#dialog) and [ARIA Practices](https://www.w3.org/TR/wai-aria-practices-1.2/#dialog_roles_states_props).
 
 Escape to dismiss [per ARIA](https://www.w3.org/TR/wai-aria-practices-1.2/#keyboard-interaction-7)
 */
