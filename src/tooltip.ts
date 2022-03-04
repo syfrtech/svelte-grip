@@ -39,9 +39,9 @@ export const hoverOrFocusTriggerAction = (
     node.onfocus = params.show;
 
     //trigger hide
-    node.onmouseleave = params.hide;
-    node.ontouchend = params.hide;
-    node.onblur = params.hide;
+    node.onmouseleave = params.close;
+    node.ontouchend = params.close;
+    node.onblur = params.close;
   };
   update(params);
   return { update };

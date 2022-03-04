@@ -44,7 +44,7 @@ export const isOpenMutators = (store: IsOpenStore) => {
   return {
     toggle: () => store.isOpen$.update((cur) => !cur),
     show: () => store.isOpen$.set(true),
-    hide: () => store.isOpen$.set(false),
+    close: () => store.isOpen$.set(false),
   };
 };
 
