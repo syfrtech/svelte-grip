@@ -15,11 +15,11 @@ This differs from CSS [visibility](https://developer.mozilla.org/en-US/docs/Web/
 [Some typescript implementations ignore HTMLDialogElement](https://github.com/microsoft/TypeScript-DOM-lib-generator/pull/1259#issue-1121802821) as of February 2022. Instead, we just check if the passed element contains the "open" property.
  */
 
-export const htmlOpenAttributeAction = (
+export const openAttributeAction = (
   node: HTMLElement & { open?: boolean },
-  store: ReturnType<typeof htmlOpenStore>
+  store: IsOpenStore
 ) => {
-  const update = (store: ReturnType<typeof htmlOpenStore>) => {
+  const update = (store: IsOpenStore) => {
     if ("open" in node) {
       node.open = get(store.isOpen$);
     }
@@ -32,14 +32,15 @@ export const htmlOpenAttributeAction = (
  * A record which indicates visibility
  * @param defaultOpen if supplied `true`, the content will be visible on initialization
  */
-export const htmlOpenStore = (defaultOpen: boolean = false) => {
+export const isOpenStore = (defaultOpen: boolean = false) => {
   return { isOpen$: writable(defaultOpen) };
 };
+export type IsOpenStore = ReturnType<typeof isOpenStore>;
 
 /**
  * Provides functions which change the visibility of the content
  */
-export const htmlOpenMutators = (store: ReturnType<typeof htmlOpenStore>) => {
+export const isOpenMutators = (store: IsOpenStore) => {
   return {
     toggle: () => store.isOpen$.update((cur) => !cur),
     show: () => store.isOpen$.set(true),
@@ -50,12 +51,10 @@ export const htmlOpenMutators = (store: ReturnType<typeof htmlOpenStore>) => {
 /**
  * Provides the visibility store and mutators
  */
-export const htmlOpenState = (
-  defaultOpen: Parameters<typeof htmlOpenStore>[0]
-) => {
-  let store = htmlOpenStore(defaultOpen);
-  let mutators = htmlOpenMutators(store);
+export const isOpenIO = (defaultOpen: Parameters<typeof isOpenStore>[0]) => {
+  let store = isOpenStore(defaultOpen);
+  let mutators = isOpenMutators(store);
   return { ...store, ...mutators };
 };
 
-export type HtmlOpenState = ReturnType<typeof htmlOpenState>;
+export type IsOpenIO = ReturnType<typeof isOpenIO>;

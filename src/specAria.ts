@@ -1,5 +1,5 @@
 import { get } from "svelte/store";
-import type { HtmlOpenState } from "./specHtml";
+import type { IsOpenStore } from "./specHtml";
 
 /**
  * `Escape` key dismisses the disclosure
@@ -14,12 +14,12 @@ import type { HtmlOpenState } from "./specHtml";
  */
 export const escapeToDismissAction = (
   node: HTMLElement,
-  params: HtmlOpenState
+  params: IsOpenStore
 ) => {
-  const update = (params: HtmlOpenState) => {
+  const update = (params: IsOpenStore) => {
     node.onkeyup = (e) => {
       if (e.key === "Escape") {
-        params.hide();
+        params.isOpen$.set(false);
       }
     };
   };
@@ -33,11 +33,8 @@ export const escapeToDismissAction = (
  * Used by:
  * - [disclosure pattern](https://www.w3.org/TR/wai-aria-practices/#wai-aria-roles-states-and-properties-8)
  */
-export const ariaExpandedAction = (
-  node: HTMLElement,
-  params: HtmlOpenState
-) => {
-  const update = ({ isOpen$ }: HtmlOpenState) => {
+export const ariaExpandedAction = (node: HTMLElement, params: IsOpenStore) => {
+  const update = ({ isOpen$ }: IsOpenStore) => {
     node.ariaExpanded = get(isOpen$) ? "true" : "false";
   };
   update(params);

@@ -1,7 +1,7 @@
 import { derived, get } from "svelte/store";
 import { useDisclosure } from "./disclosure";
 import { escapeToDismissAction, useAriaRoleAction } from "./specAria";
-import type { htmlOpenState } from "./specHtml";
+import type { IsOpenIO } from "./specHtml";
 import { combineActions } from "./utils";
 
 /**
@@ -11,11 +11,11 @@ import { combineActions } from "./utils";
  *
  * @todo maybe toggle is determined according to whether keyboard or mouse triggered the event.  @see https://www.w3.org/TR/wai-aria-practices/#keyboard-interaction-23
  */
-export const hoverOrFocusOpenAction = (
+export const hoverOrFocusTriggerAction = (
   node: HTMLElement,
-  params: ReturnType<typeof htmlOpenState>
+  params: IsOpenIO
 ) => {
-  const update = (params: ReturnType<typeof htmlOpenState>) => {
+  const update = (params: IsOpenIO) => {
     //trigger show
     node.onmouseenter = params.show;
     node.ontouchstart = params.show;
@@ -45,11 +45,15 @@ export const useTooltip = (params?: Parameters<typeof useDisclosure>[0]) => {
   let { trigger, content, ...disclosure } = get(disclosure$);
   let result = {
     ...disclosure,
-    content: combineActions([content, useAriaRoleAction("tooltip")]),
+    content: combineActions([
+      content,
+      escapeToDismissAction,
+      useAriaRoleAction("tooltip"),
+    ]),
     trigger: combineActions([
       trigger,
-      hoverOrFocusOpenAction,
       escapeToDismissAction,
+      hoverOrFocusTriggerAction,
     ]),
   };
   let result$ = derived(disclosure.isOpen$, (isOpen) => {

@@ -1,6 +1,6 @@
 import { derived } from "svelte/store";
 import { ariaExpandedAction } from "./specAria";
-import { htmlOpenAttributeAction, htmlOpenState } from "./specHtml";
+import { openAttributeAction, isOpenIO } from "./specHtml";
 import { combineActions } from "./utils";
 
 /**
@@ -10,12 +10,10 @@ import { combineActions } from "./utils";
 const triggerAction = combineActions([ariaExpandedAction]);
 
 /**
- * @see htmlOpenAttributeAction
+ * @see openAttributeAction
  * @see https://www.w3.org/TR/wai-aria-practices/#wai-aria-roles-states-and-properties-8
  */
-const contentAction = combineActions([htmlOpenAttributeAction]);
-
-const disclosureActions = { trigger: triggerAction, content: contentAction };
+const contentAction = combineActions([openAttributeAction]);
 
 /**
  * @param props.defaultOpen if supplied `true`, the disclosure will be visible on initialization
@@ -36,11 +34,11 @@ returns `[Readable<ob>, obj]` so that consumers can have access to reactive (ex:
 - [It is recommended](https://github.com/sveltejs/svelte/issues/6373) to add a `$` suffix to reactive variable names to have a simple indicator to distinguish them from non-reactive values. ex: `[$disclosure, disclosure] = useDisclosure();`
 */
 export const useDisclosure = (params?: {
-  defaultOpen: Parameters<typeof htmlOpenState>[0];
+  defaultOpen: Parameters<typeof isOpenIO>[0];
 }) => {
-  let state = htmlOpenState(params?.defaultOpen);
-  let result = { ...state, ...disclosureActions };
-  let result$ = derived(state.isOpen$, (isOpen) => {
+  let io = isOpenIO(params?.defaultOpen);
+  let result = { ...io, trigger: triggerAction, content: contentAction };
+  let result$ = derived(io.isOpen$, (isOpen) => {
     return { ...result, isOpen };
   });
   return [result$, result] as const;
