@@ -1,19 +1,25 @@
 import { derived } from "svelte/store";
 import { ariaExpandedAction } from "./specAria";
-import { openAttributeAction, isOpenIO } from "./specHtml";
-import { combineActions } from "./utils";
+import { openAttributeAction, isOpenIO, useTriggerAction } from "./specHtml";
+import { combineActionsMap } from "./utils";
 
 /**
  * @see ariaExpandedAction
  * @see https://www.w3.org/TR/wai-aria-practices/#wai-aria-roles-states-and-properties-8
  */
-const triggerAction = combineActions([ariaExpandedAction]);
+const triggerActions = {
+  ariaExpandedAction,
+  triggerAction: useTriggerAction({
+    action: "toggle",
+    triggerFromChildren: true,
+  }),
+};
 
 /**
  * @see openAttributeAction
  * @see https://www.w3.org/TR/wai-aria-practices/#wai-aria-roles-states-and-properties-8
  */
-const contentAction = combineActions([openAttributeAction]);
+const contentActions = { openAttributeAction };
 
 /**
  * @param props.defaultOpen if supplied `true`, the disclosure will be visible on initialization
@@ -37,7 +43,22 @@ export const useDisclosure = (params?: {
   defaultOpen: Parameters<typeof isOpenIO>[0];
 }) => {
   let io = isOpenIO(params?.defaultOpen);
-  let result = { ...io, trigger: triggerAction, content: contentAction };
+
+  /**
+   * @todo DRY up this code.
+   * using a function tends to lose explicit properties
+   */
+  let result = {
+    ...io,
+    use: {
+      trigger: combineActionsMap(triggerActions),
+      content: combineActionsMap(contentActions),
+    },
+    actions: {
+      trigger: triggerActions,
+      content: contentActions,
+    },
+  };
   let result$ = derived(io.isOpen$, (isOpen) => {
     return { ...result, isOpen };
   });

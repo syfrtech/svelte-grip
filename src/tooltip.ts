@@ -2,13 +2,21 @@ import { derived, get } from "svelte/store";
 import { useDisclosure } from "./disclosure";
 import { escapeToDismissAction, useAriaRoleAction } from "./specAria";
 import type { IsOpenIO } from "./specHtml";
-import { combineActions } from "./utils";
+import { combineActionsMap } from "./utils";
 
 /**
  * @see escapeToDismissAction
  * @see https://www.w3.org/TR/wai-aria-practices-1.2/#keyboard-interaction-7
  */
-const triggerAction = combineActions([escapeToDismissAction]);
+const useTriggerActions = (
+  inheritedActions: ReturnType<typeof useDisclosure>[1]["actions"]["trigger"]
+) => {
+  return {
+    ...inheritedActions,
+    escapeToDismissAction,
+    triggerAction: hoverOrFocusTriggerAction, //overwrite inherited
+  };
+};
 
 /**
  * Uses "tooltip" role [per ARIA](https://www.w3.org/TR/wai-aria-practices/#wai-aria-roles-states-and-properties-24).
@@ -16,10 +24,15 @@ const triggerAction = combineActions([escapeToDismissAction]);
  * @see escapeToDismissAction
  * @see https://www.w3.org/TR/wai-aria-practices-1.2/#keyboard-interaction-7
  */
-const contentAction = combineActions([
-  escapeToDismissAction,
-  useAriaRoleAction("tooltip"),
-]);
+const useContentActions = (
+  inheritedActions: ReturnType<typeof useDisclosure>[1]["actions"]["content"]
+) => {
+  return {
+    ...inheritedActions,
+    escapeToDismissAction,
+    ariaRoleAction: useAriaRoleAction("tooltip"),
+  };
+};
 
 /**
  * Toggles the open state from hover/focus
@@ -57,11 +70,23 @@ A tooltip shows content on hover/focus
 */
 export const useTooltip = (params?: Parameters<typeof useDisclosure>[0]) => {
   let [disclosure$] = useDisclosure(params);
-  let { trigger, content, ...disclosure } = get(disclosure$);
+  let { use, actions, ...disclosure } = get(disclosure$);
+  let triggerActions = useTriggerActions(actions.trigger);
+  let contentActions = useContentActions(actions.content);
+  /**
+   * @todo result creation needs to be DRY.
+   * using a function tends to lose explicit properties
+   */
   let result = {
     ...disclosure,
-    content: combineActions([content, contentAction]),
-    trigger: combineActions([trigger, triggerAction]),
+    use: {
+      trigger: combineActionsMap(triggerActions),
+      content: combineActionsMap(useContentActions(actions.content)),
+    },
+    actions: {
+      trigger: triggerActions,
+      content: contentActions,
+    },
   };
   let result$ = derived(disclosure.isOpen$, (isOpen) => {
     return { ...result, isOpen };

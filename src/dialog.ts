@@ -5,13 +5,31 @@ import {
   ariaModalAction,
   useAriaRoleAction,
 } from "./specAria";
-import { combineActions } from "./utils";
+import { useTriggerAction } from "./specHtml";
+import { combineActionsMap } from "./utils";
+
+const useTriggerOpenActions = (
+  inheritedActions: ReturnType<typeof useDisclosure>[1]["actions"]["trigger"]
+) => {
+  return {
+    ...inheritedActions,
+    triggerAction: useTriggerAction({
+      action: "open",
+      triggerFromChildren: true,
+    }), //overwrite inherited
+  };
+};
 
 /**
- * @see escapeToDismissAction
- * @see https://www.w3.org/TR/wai-aria-practices-1.2/#keyboard-interaction-7
+ * It is strongly recommended that the tab sequence of all dialogs include a visible element with role button that closes the dialog, such as a close icon or cancel button.
+ * [see note 3](https://www.w3.org/TR/wai-aria-practices-1.2/#keyboard-interaction-7)
  */
-const triggerAction = combineActions([escapeToDismissAction]);
+const triggerCloseActions = {
+  triggerAction: useTriggerAction({
+    action: "close",
+    triggerFromChildren: true,
+  }),
+};
 
 /**
  * Uses "dialog" role [per ARIA](https://www.w3.org/TR/wai-aria-1.2/#dialog) and [ARIA Practices](https://www.w3.org/TR/wai-aria-practices-1.2/#dialog_roles_states_props).
@@ -19,11 +37,23 @@ const triggerAction = combineActions([escapeToDismissAction]);
  * @see escapeToDismissAction
  * @see https://www.w3.org/TR/wai-aria-practices-1.2/#keyboard-interaction-7
  */
-const contentAction = combineActions([
-  escapeToDismissAction,
-  useAriaRoleAction("dialog"),
-  ariaModalAction,
-]);
+const useContentActions = (
+  inheritedActions: ReturnType<typeof useDisclosure>[1]["actions"]["content"]
+) => {
+  return {
+    ...inheritedActions,
+    ariaRoleAction: useAriaRoleAction("dialog"),
+    escapeToDismissAction,
+    ariaModalAction,
+  };
+};
+
+const contentBackdropActions = {
+  triggerAction: useTriggerAction({
+    action: "open",
+    triggerFromChildren: false,
+  }),
+};
 
 /**
  * @param props.defaultOpen if supplied `true`, the dialog will be visible on initialization
@@ -35,11 +65,27 @@ A dialog is a window overlaid on either the primary window or another dialog win
 */
 export const useDialog = (params?: Parameters<typeof useDisclosure>[0]) => {
   let [disclosure$] = useDisclosure(params);
-  let { trigger, content, ...disclosure } = get(disclosure$);
+  let { use, actions, ...disclosure } = get(disclosure$);
+  let triggerOpenActions = useTriggerOpenActions(actions.trigger);
+  let contentActions = useContentActions(actions.content);
+  /**
+   * @todo result creation needs to be DRY.
+   * using a function tends to lose explicit properties
+   */
   let result = {
     ...disclosure,
-    content: combineActions([content, contentAction]),
-    trigger: combineActions([trigger, triggerAction]),
+    use: {
+      triggerOpen: combineActionsMap(triggerOpenActions),
+      triggerClose: combineActionsMap(triggerCloseActions),
+      content: combineActionsMap(contentActions),
+      contentBackdrop: combineActionsMap(contentBackdropActions),
+    },
+    actions: {
+      triggerOpen: triggerOpenActions,
+      triggerClose: triggerCloseActions,
+      content: contentActions,
+      contentBackdrop: contentBackdropActions,
+    },
   };
   let result$ = derived(disclosure.isOpen$, (isOpen) => {
     return { ...result, isOpen };
