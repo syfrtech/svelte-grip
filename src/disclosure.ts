@@ -46,7 +46,8 @@ export const useDisclosure = (params?: {
 
   /**
    * @todo DRY up this code.
-   * using a function tends to lose explicit properties
+   * using a function tends to lose explicit properties (no mapped tuples)
+   * @see https://github.com/microsoft/TypeScript/issues/29841
    */
   let result = {
     ...io,

@@ -74,8 +74,9 @@ export const useTooltip = (params?: Parameters<typeof useDisclosure>[0]) => {
   let triggerActions = useTriggerActions(actions.trigger);
   let contentActions = useContentActions(actions.content);
   /**
-   * @todo result creation needs to be DRY.
-   * using a function tends to lose explicit properties
+   * @todo DRY up this code.
+   * using a function tends to lose explicit properties (no mapped tuples)
+   * @see https://github.com/microsoft/TypeScript/issues/29841
    */
   let result = {
     ...disclosure,
