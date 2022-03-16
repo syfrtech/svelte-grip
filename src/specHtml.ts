@@ -46,9 +46,11 @@ export const openAttributeAction = (
 export const useTriggerAction = ({
   action,
   triggerFromChildren,
+  callback,
 }: {
   action: "open" | "close" | "toggle";
   triggerFromChildren: boolean;
+  callback?: (params: IsOpenStore) => void;
 }) => {
   return (node: HTMLElement, params: IsOpenStore) => {
     const trigger = (e) => {
@@ -56,6 +58,7 @@ export const useTriggerAction = ({
         action === "open" && params.isOpen$.set(false);
         action === "close" && params.isOpen$.set(false);
         action === "toggle" && params.isOpen$.update((isOpen) => !isOpen);
+        !!callback && callback(params);
       }
     };
     const update = (params: IsOpenStore) => {
