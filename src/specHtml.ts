@@ -28,6 +28,54 @@ export const openAttributeAction = (
 };
 
 /**
+ * open or close the content when the element is triggered
+ * element is triggered by a mouse click, or keyboard space / enter key
+ *
+ * onclick (when used on a button) is also triggred by space / enter on keyboard
+ * @see https://www.w3.org/TR/wai-aria-practices/#keyboard-interaction-3
+ *
+ * action:
+ *  - "open" will expand the content on triger
+ *  - "close" will collapse the content on trigger
+ *  - "toggle" will switch between closed or opened
+ *
+ * triggerFromChildren:
+ *  - true will dismiss when the element or children are triggered
+ *  - false will dismiss only when the exact element is triggered
+ */
+export const useTriggerAction = ({
+  action,
+  triggerFromChildren,
+}: {
+  action: "open" | "close" | "toggle";
+  triggerFromChildren: boolean;
+}) => {
+  return (node: HTMLElement, params: IsOpenStore) => {
+    const trigger = (e) => {
+      if (triggerFromChildren || e.target === node) {
+        action === "open" && params.isOpen$.set(false);
+        action === "close" && params.isOpen$.set(false);
+        action === "toggle" && params.isOpen$.update((isOpen) => !isOpen);
+      }
+    };
+    const update = (params: IsOpenStore) => {
+      node.onclick = (e) => {
+        trigger(e);
+      };
+      if (!(node instanceof HTMLButtonElement)) {
+        node.onkeydown = (e) => {
+          if (e.key === "Enter" || e.key === " ") {
+            trigger(e);
+          }
+        };
+      }
+    };
+    update(params);
+    return { update };
+  };
+};
+
+/**
  * Spec suggests using native functions [`show`](https://html.spec.whatwg.org/multipage/interactive-elements.html#dom-dialog-show) and [`close`](https://html.spec.whatwg.org/multipage/interactive-elements.html#dom-dialog-close) to open/close a dialog.
  *
  * This avoids the following potential problems:
