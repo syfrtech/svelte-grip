@@ -11,6 +11,7 @@ import { combineActionsMap } from "./utils";
 
 export const dialogTriggerOpen = {
   ariaExpandedAction,
+  escapeToDismissAction,
   triggerAction: useTriggerAction({
     action: "open",
     triggerFromChildren: true,

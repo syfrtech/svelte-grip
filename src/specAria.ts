@@ -17,7 +17,7 @@ export const escapeToDismissAction = (
   params: IsOpenStore
 ) => {
   const update = (params: IsOpenStore) => {
-    node.onkeyup = (e) => {
+    node.onkeydown = (e) => {
       if (e.key === "Escape") {
         params.isOpen$.set(false);
       }
