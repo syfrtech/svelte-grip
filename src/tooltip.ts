@@ -1,38 +1,12 @@
 import { derived, get } from "svelte/store";
 import { useDisclosure } from "./disclosure";
-import { escapeToDismissAction, useAriaRoleAction } from "./specAria";
-import type { IsOpenIO } from "./specHtml";
+import {
+  escapeToDismissAction,
+  useAriaRoleAction,
+  ariaExpandedAction,
+} from "./specAria";
+import { type IsOpenIO, openAttributeAction } from "./specHtml";
 import { combineActionsMap } from "./utils";
-
-/**
- * @see escapeToDismissAction
- * @see https://www.w3.org/TR/wai-aria-practices-1.2/#keyboard-interaction-7
- */
-const useTriggerActions = (
-  inheritedActions: ReturnType<typeof useDisclosure>[1]["actions"]["trigger"]
-) => {
-  return {
-    ...inheritedActions,
-    escapeToDismissAction,
-    triggerAction: hoverOrFocusTriggerAction, //overwrite inherited
-  };
-};
-
-/**
- * Uses "tooltip" role [per ARIA](https://www.w3.org/TR/wai-aria-practices/#wai-aria-roles-states-and-properties-24).
- *
- * @see escapeToDismissAction
- * @see https://www.w3.org/TR/wai-aria-practices-1.2/#keyboard-interaction-7
- */
-const useContentActions = (
-  inheritedActions: ReturnType<typeof useDisclosure>[1]["actions"]["content"]
-) => {
-  return {
-    ...inheritedActions,
-    escapeToDismissAction,
-    ariaRoleAction: useAriaRoleAction("tooltip"),
-  };
-};
 
 /**
  * Toggles the open state from hover/focus
@@ -61,6 +35,28 @@ export const hoverOrFocusTriggerAction = (
 };
 
 /**
+ * @see escapeToDismissAction
+ * @see https://www.w3.org/TR/wai-aria-practices-1.2/#keyboard-interaction-7
+ */
+const tooltipTrigger = {
+  ariaExpandedAction,
+  escapeToDismissAction,
+  triggerAction: hoverOrFocusTriggerAction, //overwrite inherited
+};
+
+/**
+ * Uses "tooltip" role [per ARIA](https://www.w3.org/TR/wai-aria-practices/#wai-aria-roles-states-and-properties-24).
+ *
+ * @see escapeToDismissAction
+ * @see https://www.w3.org/TR/wai-aria-practices-1.2/#keyboard-interaction-7
+ */
+const tooltipContent = {
+  openAttributeAction,
+  escapeToDismissAction,
+  ariaRoleAction: useAriaRoleAction("tooltip"),
+};
+
+/**
  * @param props.defaultOpen if supplied `true`, the tooltip will be visible on initialization
  * 
 # Tooltip
@@ -70,9 +66,7 @@ A tooltip shows content on hover/focus
 */
 export const useTooltip = (params?: Parameters<typeof useDisclosure>[0]) => {
   let [disclosure$] = useDisclosure(params);
-  let { use, actions, ...disclosure } = get(disclosure$);
-  let triggerActions = useTriggerActions(actions.trigger);
-  let contentActions = useContentActions(actions.content);
+  let { trigger, content, ...disclosure } = get(disclosure$);
   /**
    * @todo DRY up this code.
    * using a function tends to lose explicit properties (no mapped tuples)
@@ -80,14 +74,8 @@ export const useTooltip = (params?: Parameters<typeof useDisclosure>[0]) => {
    */
   let result = {
     ...disclosure,
-    use: {
-      trigger: combineActionsMap(triggerActions),
-      content: combineActionsMap(useContentActions(actions.content)),
-    },
-    actions: {
-      trigger: triggerActions,
-      content: contentActions,
-    },
+    trigger: combineActionsMap(tooltipTrigger),
+    content: combineActionsMap(tooltipTrigger),
   };
   let result$ = derived(disclosure.isOpen$, (isOpen) => {
     return { ...result, isOpen };

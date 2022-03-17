@@ -7,7 +7,7 @@ import { combineActionsMap } from "./utils";
  * @see ariaExpandedAction
  * @see https://www.w3.org/TR/wai-aria-practices/#wai-aria-roles-states-and-properties-8
  */
-const triggerActions = {
+export const disclosureTrigger = {
   ariaExpandedAction,
   triggerAction: useTriggerAction({
     action: "toggle",
@@ -19,7 +19,7 @@ const triggerActions = {
  * @see openAttributeAction
  * @see https://www.w3.org/TR/wai-aria-practices/#wai-aria-roles-states-and-properties-8
  */
-const contentActions = { openAttributeAction };
+export const disclosureContent = { openAttributeAction };
 
 /**
  * @param props.defaultOpen if supplied `true`, the disclosure will be visible on initialization
@@ -51,14 +51,8 @@ export const useDisclosure = (params?: {
    */
   let result = {
     ...io,
-    use: {
-      trigger: combineActionsMap(triggerActions),
-      content: combineActionsMap(contentActions),
-    },
-    actions: {
-      trigger: triggerActions,
-      content: contentActions,
-    },
+    trigger: combineActionsMap(disclosureTrigger),
+    content: combineActionsMap(disclosureContent),
   };
   let result$ = derived(io.isOpen$, (isOpen) => {
     return { ...result, isOpen };
