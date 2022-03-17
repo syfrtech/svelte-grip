@@ -55,7 +55,7 @@ export const useTriggerAction = ({
   return (node: HTMLElement, params: IsOpenStore) => {
     const trigger = (e) => {
       if (triggerFromChildren || e.target === node) {
-        action === "open" && params.isOpen$.set(false);
+        action === "open" && params.isOpen$.set(true);
         action === "close" && params.isOpen$.set(false);
         action === "toggle" && params.isOpen$.update((isOpen) => !isOpen);
         !!callback && callback(params);
