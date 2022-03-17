@@ -1,5 +1,24 @@
 undefined
 
+### [0.0.1-alpha.14](https://github.com/syfrtech/svelte-grip/compare/0.0.1-alpha.13...0.0.1-alpha.14) (2022-03-17)
+
+
+### Features
+
+* add callback option for useTriggerAction ([59e54d7](https://github.com/syfrtech/svelte-grip/commit/59e54d70b7b7fa36d301f4e7b2bc45e1f242eb35))
+* add useTriggerAction ([ae185e9](https://github.com/syfrtech/svelte-grip/commit/ae185e9ce9666e58a6b8508e26c2e55c99e99df5))
+* revert to enumerated actions ([29182a3](https://github.com/syfrtech/svelte-grip/commit/29182a3fc0081ab12d30042887f599448c0abbdc))
+
+
+### Documentation
+
+* clarify no mapped tuple ([c625e13](https://github.com/syfrtech/svelte-grip/commit/c625e1334f372b6d1828935d3936017f527480d4))
+
+
+### Fixes
+
+* correct open action ([15e77a0](https://github.com/syfrtech/svelte-grip/commit/15e77a06782ae60e30e6e6dde5c8eb91f61e8e4a))undefined
+
 ### [0.0.1-alpha.13](https://github.com/syfrtech/svelte-grip/compare/0.0.1-alpha.12...0.0.1-alpha.13) (2022-03-04)
 
 
