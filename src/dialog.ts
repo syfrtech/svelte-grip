@@ -5,9 +5,9 @@ import {
   ariaModalAction,
   ariaExpandedAction,
   useAriaRoleAction,
-} from "./specAria";
-import { useTriggerAction, openAttributeAction } from "./specHtml";
-import { combineActionsMap } from "./utils";
+} from "./specAria.js";
+import { useTriggerAction, openAttributeAction } from "./specHtml.js";
+import { combineActionsMap } from "./utils.js";
 
 export const dialogTriggerOpen = {
   ariaExpandedAction,
