@@ -1,5 +1,12 @@
 undefined
 
+### [0.0.1-alpha.15](https://github.com/syfrtech/svelte-grip/compare/0.0.1-alpha.14...0.0.1-alpha.15) (2022-05-10)
+
+
+### Fixes
+
+* add file extensions ([e2aec78](https://github.com/syfrtech/svelte-grip/commit/e2aec780e4e8db793113497bcf9e8b5a02130c5d))undefined
+
 ### [0.0.1-alpha.14](https://github.com/syfrtech/svelte-grip/compare/0.0.1-alpha.13...0.0.1-alpha.14) (2022-03-17)
 
 
