@@ -1,7 +1,7 @@
 import { derived } from "svelte/store";
-import { ariaExpandedAction } from "./specAria";
-import { openAttributeAction, isOpenIO, useTriggerAction } from "./specHtml";
-import { combineActionsMap } from "./utils";
+import { ariaExpandedAction } from "./specAria.js";
+import { openAttributeAction, isOpenIO, useTriggerAction } from "./specHtml.js";
+import { combineActionsMap } from "./utils.js";
 
 /**
  * @see ariaExpandedAction

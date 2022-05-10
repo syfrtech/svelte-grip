@@ -1,12 +1,12 @@
 import { derived, get } from "svelte/store";
-import { useDisclosure } from "./disclosure";
+import { useDisclosure } from "./disclosure.js";
 import {
   escapeToDismissAction,
   useAriaRoleAction,
   ariaExpandedAction,
-} from "./specAria";
-import { type IsOpenIO, openAttributeAction } from "./specHtml";
-import { combineActionsMap } from "./utils";
+} from "./specAria.js";
+import { type IsOpenIO, openAttributeAction } from "./specHtml.js";
+import { combineActionsMap } from "./utils.js";
 
 /**
  * Toggles the open state from hover/focus

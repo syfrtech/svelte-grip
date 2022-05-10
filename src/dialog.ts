@@ -1,5 +1,5 @@
 import { derived, get } from "svelte/store";
-import { useDisclosure } from "./disclosure";
+import { useDisclosure } from "./disclosure.js";
 import {
   escapeToDismissAction,
   ariaModalAction,

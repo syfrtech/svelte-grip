@@ -1,5 +1,5 @@
 import { get } from "svelte/store";
-import type { IsOpenStore } from "./specHtml";
+import type { IsOpenStore } from "./specHtml.js";
 
 /**
  * `Escape` key dismisses the disclosure
